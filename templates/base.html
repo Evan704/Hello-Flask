@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Web{% endblock %}</title>
+    <style>
+        /* 共享的CSS样式 */
+        body { font-family: sans-serif; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        header { background-color: #333; color: white; padding: 1rem; }
+        header nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; }
+        header nav a { color: white; text-decoration: none; }
+        main { flex-grow: 1; padding: 2rem; max-width: 900px; margin: 0 auto; }
+        footer { background-color: #f2f2f2; text-align: center; padding: 1rem; margin-top: auto; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">首页</a></li>
+                <li><a href="{{ url_for('about') }}">关于</a></li>
+                <li><a href="{{ url_for('contact') }}">联系</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>这是页脚</p>
+    </footer>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>
